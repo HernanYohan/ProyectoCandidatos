@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true" /> 
+            <p:dataTable id="table" var="can" value="#{B_Resultados.lista.aspirantes}" selectionMode="single" selection="#{B_Resultados.p_aspitante}" rowKey="#{can.tarjeton}">
+                <f:facet name="header">
+                    Aspirantes
+                </f:facet>
+                <p:ajax event="rowSelect" listener="#{B_Resultados.onRowSelect}" update=":form:msgs" />
+                <p:column headerText="Tarjeton">
+                    <h:outputText value="#{can.tarjeton}" />
+                </p:column>
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{can.nombre}" />
+                </p:column>
+                <p:column headerText="Apellido">
+                    <h:outputText value="#{can.apellido}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        
+    </h:body>
+</html>
